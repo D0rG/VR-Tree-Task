@@ -20,6 +20,7 @@ public sealed class UnityTreeNode : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float sizeMultiplier;
 
     public UnityTreeNode parent { get; private set; }
+    public int layerNumber { get; private set; }
     [SerializeField] private TreeNode node;
     public TreeNode currentNode
     {
@@ -27,9 +28,10 @@ public sealed class UnityTreeNode : MonoBehaviour
         private set { node = value; }
     }
 
-    public void Init(Color color, Vector3 spawnPos, UnityTreeNode parent, TreeNode node)
+    public void Init(Color color, Vector3 spawnPos, UnityTreeNode parent, TreeNode node, int layerNumber)
     {
         this.parent = parent;
+        this.layerNumber = layerNumber;
         currentNode = node;
         _transform.position = spawnPos;
         _meshRenderer.material.color = color;
