@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using TreeEditor;
 using UnityEngine;
 
 namespace TreeJsonUtility
 {
     public class JsonTreeReader : MonoBehaviour
     {
+        public static JsonTreeReader instance;
         [SerializeField] private string _fileName;
         private string _path;
         [SerializeField] private TreeNode _root;
-
         public TreeNode root
         {
             get { return _root; }
@@ -20,6 +17,8 @@ namespace TreeJsonUtility
 
         private void Awake()
         {
+            if(instance == null) { instance = this; }
+
             _path = Path.Combine(Application.dataPath, _fileName);
 
             if (File.Exists(_path))
