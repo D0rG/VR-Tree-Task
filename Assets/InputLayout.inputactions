@@ -1,0 +1,94 @@
+{
+    "name": "InputAction",
+    "maps": [
+        {
+            "name": "OpenXR",
+            "id": "7942eee3-bdb6-470b-a89d-b6dbc8ff57cd",
+            "actions": [
+                {
+                    "name": "ToggleGripLeft",
+                    "type": "Button",
+                    "id": "66dfff60-2cbb-48b3-ba2c-bbb92d5f7615",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleGripRight",
+                    "type": "Button",
+                    "id": "b2c3cd02-98e5-4b27-a5be-ae15f09b6556",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TriggerLeft",
+                    "type": "Button",
+                    "id": "686ced5b-0aa7-4b4f-b334-b10ac7563056",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TriggerRight",
+                    "type": "Button",
+                    "id": "dd787212-3a52-4451-b520-152a266c0605",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "37a97c6b-6255-4dd3-a447-951bd9e3f26e",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGripLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5364266-bd6d-4b68-be14-32f162e05c77",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGripRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "353307b8-8ccd-4464-9856-2edb4cfbc4c1",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87e0e087-b655-4d88-97c5-3172d3c98472",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
