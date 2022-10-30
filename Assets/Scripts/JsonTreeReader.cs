@@ -19,7 +19,7 @@ namespace TreeJsonUtility
         {
             if(instance == null) { instance = this; }
 
-            _path = Path.Combine(Application.dataPath, _fileName);
+            _path = Path.Combine(Application.persistentDataPath, _fileName);
 
             if (!File.Exists(_path))
             {
