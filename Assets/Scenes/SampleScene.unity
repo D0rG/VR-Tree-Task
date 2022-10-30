@@ -258,6 +258,7 @@ MonoBehaviour:
   _layersColor: {fileID: 11400000, guid: 67c2e0891a2c88e43a6e6e1c6f835f99, type: 2}
   _treeNodePrefab: {fileID: 1970463532619750361, guid: 375ae4bf426db8042a43c9de73ec1310,
     type: 3}
+  _lineWidht: 0.055
 --- !u!114 &464771465
 MonoBehaviour:
   m_ObjectHideFlags: 0

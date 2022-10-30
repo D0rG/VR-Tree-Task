@@ -42,7 +42,7 @@ public sealed class UnityTreeNode : MonoBehaviour
         _transform = this.transform;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (parent == null) { return; }
         ClearLine();
@@ -54,5 +54,10 @@ public sealed class UnityTreeNode : MonoBehaviour
     {
         _lineRenderer.positionCount = 0;
         _lineRenderer.positionCount = 2;
+    }
+
+    public LineRenderer GetLine()
+    {
+        return _lineRenderer;
     }
 }

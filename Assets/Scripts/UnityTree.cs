@@ -7,24 +7,27 @@ public class UnityTree : MonoBehaviour
 {
     [SerializeField] private LayersColor _layersColor;
     [SerializeField] private UnityTreeNode _treeNodePrefab;
+    [SerializeField] private float _lineWidht = 0.055f;
     private List<UnityTreeNode> _tree = new List<UnityTreeNode>();
-    private TreeNode root;
-    private Dictionary<int, int> countOnLayer = new Dictionary<int, int>()
+    private TreeNode _root;
+    private Dictionary<int, int> _countOnLayer = new Dictionary<int, int>()
     {
         { 0, 1 },   //root node
     };
+    private LineRenderer[] _lines;
 
     private void Start()
     {
-        root = JsonTreeReader.instance.root;
+        _root = JsonTreeReader.instance.root;
         DrawTree();
     }
 
     private void DrawTree()
     {
-        CalculateCountOnLayer(root);
-        DrawNode(root);
+        CalculateCountOnLayer(_root);
+        DrawNode(_root);
         ArrangeNode();
+        _lines = _tree.Select(x => x.GetLine()).ToArray();
     }
 
     private void DrawNode(TreeNode node, UnityTreeNode parent = null, int layerNumber = 0)
@@ -44,9 +47,9 @@ public class UnityTree : MonoBehaviour
 
     private void ArrangeNode()
     {
-        for (int i = 1; i < countOnLayer.Count; i++)
+        for (int i = 1; i < _countOnLayer.Count; i++)
         {
-            int countOnCurrentLayer = countOnLayer[i];
+            int countOnCurrentLayer = _countOnLayer[i];
             var nodesOnCurrentLayer = _tree
                 .Where(x => x.layerNumber == i)
                 .ToArray();
@@ -66,15 +69,25 @@ public class UnityTree : MonoBehaviour
         layerNumber++;
         foreach (var childNode in rootNode.Node)
         {
-            if (countOnLayer.ContainsKey(layerNumber))
+            if (_countOnLayer.ContainsKey(layerNumber))
             {
-                countOnLayer[layerNumber]++;
+                _countOnLayer[layerNumber]++;
             }
             else
             {
-                countOnLayer[layerNumber] = 1;
+                _countOnLayer[layerNumber] = 1;
             }
             CalculateCountOnLayer(childNode, layerNumber);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        foreach(var line in _lines)
+        {
+            var point = line.widthCurve[0];
+            point.value = transform.lossyScale.x * _lineWidht;
+            line.widthCurve = new AnimationCurve(point);
         }
     }
 }
