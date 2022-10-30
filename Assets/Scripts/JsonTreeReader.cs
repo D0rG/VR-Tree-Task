@@ -21,15 +21,74 @@ namespace TreeJsonUtility
 
             _path = Path.Combine(Application.dataPath, _fileName);
 
-            if (File.Exists(_path))
+            if (!File.Exists(_path))
             {
-                var json = File.ReadAllText(_path);
-                root = JsonUtility.FromJson<TreeNode>(json);
+                root = new TreeNode
+                {
+                    Name = "Эукариоты",
+                    Node = new TreeNode[]
+                    {
+                        new TreeNode
+                        {
+                            Name = "Животные",
+                            Node = new TreeNode[]
+                            {
+                                new TreeNode
+                                {
+                                    Name = "Человек",
+                                    Node = null
+                                },
+                                new TreeNode
+                                {
+                                    Name = "Кошка",
+                                    Node = null
+                                },
+                                new TreeNode
+                                {
+                                    Name = "Собака",
+                                    Node = null
+                                }
+                            }
+                        },
+                        new TreeNode
+                        {
+                            Name = "Растения",
+                            Node = new TreeNode[]
+                            {
+                                new TreeNode
+                                {
+                                    Name = "Водоросли",
+                                    Node = null
+                                },
+                                new TreeNode
+                                {
+                                    Name = "Мхи",
+                                    Node = null
+                                },
+                                new TreeNode
+                                {
+                                    Name = "Папоротники",
+                                    Node = null
+                                },
+                                new TreeNode
+                                {
+                                    Name = "Хвойные",
+                                    Node = null
+                                }
+                            }
+                        }
+                    }
+                };
+                var jsonText = JsonUtility.ToJson(root);
+                File.WriteAllText(_path, jsonText);
             }
-            else
-            {
-                throw new FileNotFoundException($"Can't find file {_path}");
-            }
+            UpdateRootFormFile(_path);
+        }
+
+        private void UpdateRootFormFile(string _path)
+        {
+            var json = File.ReadAllText(_path);
+            root = JsonUtility.FromJson<TreeNode>(json);
         }
     }
 }
