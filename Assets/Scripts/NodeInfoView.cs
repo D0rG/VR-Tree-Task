@@ -26,14 +26,13 @@ public class NodeInfoView : MonoBehaviour
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine(node.currentNode.Name);
-
+            builder.Append("\n");
             if (node.parent != null)
             {
                 builder.Append("Предок: ");
                 builder.Append(node.parent.currentNode.Name);
                 builder.Append("\n");
             }
-
             builder.Append("Потомки: ");
             foreach(var child in node.currentNode.Node)
             {
