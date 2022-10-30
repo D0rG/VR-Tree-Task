@@ -23,10 +23,6 @@ public class UnityTree : MonoBehaviour
     private void DrawTree()
     {
         CalculateCountOnLayer(root);
-        foreach (var dic in countOnLayer)
-        {
-            Debug.Log($"layer: {dic.Key}, value: {dic.Value}");
-        }
         DrawNode(root);
         ArrangeNode();
     }
@@ -36,7 +32,7 @@ public class UnityTree : MonoBehaviour
         var parentTransform = (parent != null) ? parent.transform : this.transform;
         var nodeSctipt = Instantiate(_treeNodePrefab, parentTransform);
         Color layerColor = _layersColor.colors[layerNumber % _layersColor.colors.Length];
-        nodeSctipt.Init(layerColor, Vector3.zero, parent, node, layerNumber);
+        nodeSctipt.Init(layerColor, this.transform.position, parent, node, layerNumber);
         _tree.Add(nodeSctipt);
 
         layerNumber++;
@@ -56,7 +52,7 @@ public class UnityTree : MonoBehaviour
                 .ToArray();
             float stepPositionXSize = nodesOnCurrentLayer[0].transform.localScale.x * 1.5f;
             var x = (stepPositionXSize * nodesOnCurrentLayer.Length / 2 + nodesOnCurrentLayer[0].transform.localScale.x);
-            var currnetNodePosition = new Vector3(x, i * 1.5f, 0);
+            var currnetNodePosition = new Vector3(transform.position.x + x, (i * 1.5f) + transform.position.y, transform.position.z);
             foreach(var node in nodesOnCurrentLayer)
             {
                 currnetNodePosition.x -= stepPositionXSize;
