@@ -18,61 +18,61 @@ namespace TreeJsonUtility
         private void Awake()
         {
             if(instance == null) { instance = this; }
-
             _path = Path.Combine(Application.persistentDataPath, _fileName);
+            Debug.Log($"Datapath: {_path}");
 
             if (!File.Exists(_path))
             {
                 root = new TreeNode
                 {
-                    Name = "Эукариоты",
+                    Value = "Эукариоты",
                     Node = new TreeNode[]
                     {
                         new TreeNode
                         {
-                            Name = "Животные",
+                            Value = "Животные",
                             Node = new TreeNode[]
                             {
                                 new TreeNode
                                 {
-                                    Name = "Человек",
+                                    Value = "Человек",
                                     Node = null
                                 },
                                 new TreeNode
                                 {
-                                    Name = "Кошка",
+                                    Value = "Кошка",
                                     Node = null
                                 },
                                 new TreeNode
                                 {
-                                    Name = "Собака",
+                                    Value = "Собака",
                                     Node = null
                                 }
                             }
                         },
                         new TreeNode
                         {
-                            Name = "Растения",
+                            Value = "Растения",
                             Node = new TreeNode[]
                             {
                                 new TreeNode
                                 {
-                                    Name = "Водоросли",
+                                    Value = "Водоросли",
                                     Node = null
                                 },
                                 new TreeNode
                                 {
-                                    Name = "Мхи",
+                                    Value = "Мхи",
                                     Node = null
                                 },
                                 new TreeNode
                                 {
-                                    Name = "Папоротники",
+                                    Value = "Папоротники",
                                     Node = null
                                 },
                                 new TreeNode
                                 {
-                                    Name = "Хвойные",
+                                    Value = "Хвойные",
                                     Node = null
                                 }
                             }

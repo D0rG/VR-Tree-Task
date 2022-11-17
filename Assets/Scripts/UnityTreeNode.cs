@@ -31,7 +31,7 @@ public sealed class UnityTreeNode : MonoBehaviour
         currentNode = node;
         _transform.position = spawnPos;
         _meshRenderer.material.color = color;
-        _textMesh.text = node.Name;
+        _textMesh.text = node.Value;
 
         if(parent == null) { return; }
         _transform.localScale = parent.transform.localScale * sizeMultiplier;

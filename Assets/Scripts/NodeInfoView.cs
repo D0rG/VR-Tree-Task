@@ -25,18 +25,18 @@ public class NodeInfoView : MonoBehaviour
         if (other.gameObject.TryGetComponent(out UnityTreeNode node))
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine(node.currentNode.Name);
+            builder.AppendLine(node.currentNode.Value);
             builder.Append("\n");
             if (node.parent != null)
             {
                 builder.Append("Предок: ");
-                builder.Append(node.parent.currentNode.Name);
+                builder.Append(node.parent.currentNode.Value);
                 builder.Append("\n");
             }
             builder.Append("Потомки: ");
             foreach(var child in node.currentNode.Node)
             {
-                builder.Append(child.Name);
+                builder.Append(child.Value);
                 builder.Append(" ");
             }
             _view.text = builder.ToString();
