@@ -3,9 +3,13 @@ using System;
 namespace TreeJsonUtility
 {
     [Serializable]
-    public struct TreeNode
+    public class TreeNode : Node<string>
     {
-        public string Name;
         public TreeNode[] Node;
+    }
+
+    public abstract class Node<T>
+    {
+        public T Value;
     }
 }
